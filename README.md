@@ -6,11 +6,9 @@ This project gone to management of donations from animals who have any street pr
 
 ### Development
 
-* MVC
-
-* [BE] - NodeJS (v12.13.0) Apis
-* [BE] - KNEX 
-* [DATABASE] - Sqlite
+* [BE] - NodeJS (v12.13.0) APIs
+* [BE] - Knex to datas and database manipulation  
+* [DATABASE] - SQLite
 
 
 ### Installation
