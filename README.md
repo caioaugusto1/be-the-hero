@@ -8,19 +8,23 @@ This project gone to management of donations from animals who have any street pr
 
 * [BE] - NodeJS (v12.13.0) APIs
 * [BE] - Knex to datas and database manipulation  
+
+* [FE] - React (v16.13.1)
+
 * [DATABASE] - SQLite
+
 
 
 ### Installation
 
 Requires any Front End Editor - to run
 
-After you cloned the repository, you should open project on your front end editor and run the code below to node_module folder install: 
+After you cloned the repository, you should open project backend and frontend development (one for each) on your front end editor and run the code below to node_module folder install: 
 ```sh
 $ npm install 
 ```
 
-Run Migrations command to create database.
+Go to #backend folder and you should run Migrations command to create database.
 
 ```sh
 $ npx knex migrate:latest
