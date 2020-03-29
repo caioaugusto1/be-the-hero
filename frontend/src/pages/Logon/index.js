@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
 
 import './styles.css';
@@ -7,29 +7,54 @@ import './styles.css';
 import heroesImg from '../../assents/heroes.png';
 import logoImg from '../../assents/logo.svg';
 
-export default function Logon(){
+import '../../services/api';
+import api from '../../services/api';
 
-    return(
+export default function Logon() {
+
+    const history = useHistory();
+
+    const [id, setId] = useState('');
+
+    async function handleLogin(e) {
+        e.preventDefault();
+
+        try {
+            const response = await api.post('session', { id });
+            localStorage.setItem('ongId', id);
+            localStorage.setItem('ongName', response.data.name);
+
+            history.push('/profile')
+            console.log(response.data.name);
+        } catch (error) {
+            alert('Try again')
+        }
+
+    }
+
+    return (
         <div className="logon-container">
-        <section className="form">
-            <img src={logoImg} alt="Be The Hero" />
-        
-            <form>
-                <h1>Logon</h1>
+            <section className="form">
+                <img src={logoImg} alt="Be The Hero" />
 
-                <input placeholder="Your Id" />
+                <form onSubmit={handleLogin}>
+                    <h1>Logon</h1>
 
-                <button className="button" type="submit">Sign In</button>
-                
-                <Link to="/register">
-                    <FiLogIn  size={16} color="#E02041"/>    
+                    <input placeholder="Your Id"
+                        value={id}
+                        onChange={e => setId(e.target.value)} />
+
+                    <button className="button" type="submit">Sign In</button>
+
+                    <Link to="/register">
+                        <FiLogIn size={16} color="#E02041" />
                     Sign Up
                 </Link>
-            </form>
-        
-        </section>
+                </form>
 
-        <img src={heroesImg} alt="Heroes" />
-      </div>
+            </section>
+
+            <img src={heroesImg} alt="Heroes" />
+        </div>
     );
 }
