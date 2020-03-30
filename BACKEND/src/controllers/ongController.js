@@ -1,21 +1,12 @@
-const crypto = require('crypto');
 const connection = require('../database/connection');
+const generateUniqueId = require('../utils/generateUniqueId');
 
 module.exports = {
 
     async index(request, response){
+
+        const ongs = await connection('ongs').select("*");
         
-        const { page = 1 } = request.query;
-
-        const count = await connection('ongs').count();
-
-        const ongs = await connection('ongs').limit(5)
-        .join('ongs', 'ongs_id', '=', 'incidents.ong_id')
-        .offset((page - 1) * 5)
-        .select(['incidents.*', 'ongs.xname', 'ongs.email', 'ongs.whatsapp', 'ongs.city', 'ongs.uf']);
-
-        response.header('X-Total-Count', count['count(*)']);
-    
         return response.json(ongs);
     }, 
 
@@ -23,7 +14,7 @@ module.exports = {
 
         const { name, email, whatsapp, city, uf } = request.body;
 
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
     
         await connection('ongs').insert({
             id, 
@@ -33,5 +24,7 @@ module.exports = {
             city, 
             uf
         })
+
+        return response.json({id});
     }
 };
