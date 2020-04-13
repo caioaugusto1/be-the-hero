@@ -42,7 +42,7 @@ export default function Register() {
                                 <section>
                                         <img src={logoImg} alt="Be The hero" />
                                         <h1> Create</h1>
-                                        <p>Create your SingIn entre na plataforma e ajude as pessoas </p>
+                                        <p>Create your SingIn and help the animals </p>
 
                                         <Link className="back-link" to="/">
                                                 <FiArrowLeft size={16} color="#E02041">
@@ -54,7 +54,7 @@ export default function Register() {
 
                                 <form onSubmit={handleRegister}>
 
-                                        <input placeholder="ONG Name" value={name}
+                                        <input placeholder="NGO Name" value={name}
                                                 onChange={e => setName(e.target.value)} />
 
                                         <input type="email" placeholder="Email" value={email}
