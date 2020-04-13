@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiArrowRight } from 'react-icons/fi';
 
 import './styles.css';
 
@@ -25,7 +25,7 @@ export default function Logon() {
             localStorage.setItem('ongName', response.data.name);
 
             history.push('/profile')
-            console.log(response.data.name);
+
         } catch (error) {
             alert('Try again')
         }
@@ -49,6 +49,10 @@ export default function Logon() {
                     <Link to="/register">
                         <FiLogIn size={16} color="#E02041" />
                     Sign Up
+                </Link>
+                <Link to="/newDonation">
+                        <FiArrowRight size={16} color="#E02041" />
+                    New Donation
                 </Link>
                 </form>
 
