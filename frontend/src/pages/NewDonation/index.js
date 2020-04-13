@@ -47,8 +47,8 @@ export default function NewDonation() {
 
 
                             <div className="input-group">
-                                <a className="button" href="mailto:caiio_augustto@hotmail.com?Subject=Donation%20" target="_top">Send Mail</a>
-                                <a className="button" href="https://wa.me/353831203927?text=I am%20interested%20in%20make%20a%20donation" target="_blank">WhatsApp</a>
+                                <a className="button" style={{ width: "40%", marginRight: "10%" }} href="mailto:caiio_augustto@hotmail.com?Subject=Donation%20" target="_top">Send Mail</a>
+                                <a className="button" style={{ width: "40%", marginLeft: "10%" }} href="https://wa.me/353831203927?text=I am%20interested%20in%20make%20a%20donation" target="_blank">WhatsApp</a>
                             </div>
                         </li>
                     )
